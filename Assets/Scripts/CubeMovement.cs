@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CubeMovement : MonoBehaviour
@@ -9,9 +10,11 @@ public class CubeMovement : MonoBehaviour
 
     public Vector3 vector3Scale = Vector3.zero;
 
+
     void Start()
     {
         Debug.Log("Ela kai pou eisai");
+
     }
 
     void Update()
