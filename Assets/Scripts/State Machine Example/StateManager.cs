@@ -35,5 +35,7 @@ public class StateManager : MonoBehaviour
     void Update()
     {
         currentState.UpdateState();
+
+        if (Input.GetKeyDown(KeyCode.Escape)) { Debug.Log("Escape pressed"); }
     }
 }
