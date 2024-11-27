@@ -12,6 +12,7 @@ public class Comet : MonoBehaviour
 
     void Start()
     {
+        speed = GameManager.instance.currentEnemySpeed;
         // Get the Rigidbody component attached to the object
         rb = GetComponent<Rigidbody>();
     }
@@ -25,7 +26,12 @@ public class Comet : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
 
-        if(col.gameObject.name == "SpaceShip") Debug.Log("Game Over");
-            
+        if (col.gameObject.name == "SpaceShip") GameManager.instance.spaceship.Crashed();
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "End") Destroy(gameObject);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SpaceshipMover : MonoBehaviour
@@ -19,6 +20,17 @@ public class SpaceshipMover : MonoBehaviour
 
 
     }
-    public void Tarxidiamou() { }
+
+    public void Crashed()
+    {
+        speed = 0;
+        StartCoroutine(WaitToDestroy());
+    }
+
+    private IEnumerator WaitToDestroy()
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
+    }
 
 }

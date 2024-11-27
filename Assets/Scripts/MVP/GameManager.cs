@@ -3,21 +3,33 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;  // Enemy prefab for spawning
+    public static GameManager instance;
+
+    public SpaceshipMover spaceship;
+
+    public GameObject cometPrefab;  // Enemy prefab for spawning
     public Transform[] spawnPoints; // Locations where enemies will spawn
     public int initialEnemiesPerWave = 5;  // Number of enemies to spawn initially
-    public float initialEnemySpeed = 2f;   // Starting speed for enemies
     public float spawnInterval = 2f;       // Time between enemy spawns
     public float difficultyIncreaseInterval = 30f;  // How often to increase difficulty (in seconds)
 
-    private int currentWave = 1;  // The current wave number
-    private int enemiesRemaining; // Number of enemies remaining in the current wave
-    private float currentEnemySpeed; // Current speed of enemies
+    public int currentWave = 1;  // The current wave number
+    public int enemiesRemaining; // Number of enemies remaining in the current wave
+    public float currentEnemySpeed; // Current speed of enemies
     private float currentSpawnInterval;  // Current time between spawns
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+
+        }
+    }
 
     void Start()
     {
-        currentEnemySpeed = initialEnemySpeed;
+        //AccountManager.instance.Login();
         currentSpawnInterval = spawnInterval;
         StartCoroutine(StartWave());
         StartCoroutine(IncreaseDifficultyOverTime());
@@ -44,7 +56,7 @@ public class GameManager : MonoBehaviour
     private void SpawnEnemy()
     {
         int spawnIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+        Instantiate(cometPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
     }
 
     // Coroutine to increase difficulty over time
@@ -57,6 +69,7 @@ public class GameManager : MonoBehaviour
             // Increase the enemy speed and decrease spawn interval (difficulty mechanics)
             currentEnemySpeed += 0.5f;  // Increase enemy speed
             currentSpawnInterval = Mathf.Max(0.5f, currentSpawnInterval - 0.1f);  // Decrease spawn interval (up to a limit)
+
         }
     }
 
