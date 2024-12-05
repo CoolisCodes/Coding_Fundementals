@@ -11,27 +11,27 @@ public class Spaceship : MonoBehaviour
 
     private float fireCooldown = 0f;     // To track time for firing bullets
 
-    void Update()
-    {
-        // Handle continuous shooting
-        fireCooldown -= Time.deltaTime;
+    // void Update()
+    // {
+    //     // Handle continuous shooting
+    //     fireCooldown -= Time.deltaTime;
 
-        if (fireCooldown <= 0f)
-        {
-            Shoot();
-            fireCooldown = fireRate;
-        }
-    }
+    //     if (fireCooldown <= 0f)
+    //     {
+    //         //Shoot();
+    //         fireCooldown = fireRate;
+    //     }
+    // }
 
-    void Shoot()
-    {
-        // Instantiate bullet and apply velocity
-        GameObject bullet = ObjectPool.Instance.GetBullet();
-        if (bullet != null)
-        {
-            bullet.transform.position = bulletSpawnPoint.position;  // Position it at the spawn point
-            bullet.transform.rotation = bulletSpawnPoint.rotation;  // Align rotation
-            bullet.SetActive(true);  // Activate bullet
-        }
-    }
+    // void Shoot()
+    // {
+    //     // Instantiate bullet and apply velocity
+    //     // GameObject bullet = ObjectPool.Instance.GetBullet();
+    //     if (bullet != null)
+    //     {
+    //         bullet.transform.position = bulletSpawnPoint.position;  // Position it at the spawn point
+    //         bullet.transform.rotation = bulletSpawnPoint.rotation;  // Align rotation
+    //         bullet.SetActive(true);  // Activate bullet
+    //     }
+    // }
 }
