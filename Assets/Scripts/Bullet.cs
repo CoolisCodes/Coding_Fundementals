@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
         timeAlive += Time.deltaTime;
         if (timeAlive > lifespan)
         {
-            gameObject.SetActive(false); // Deactivate bullet (use object pooling)
+            Destroy(gameObject); // Deactivate bullet (use object pooling)
         }
     }
 
