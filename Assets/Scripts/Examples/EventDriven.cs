@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EventDriven : MonoBehaviour
 {
+
     public Action<int, string> onGameStarted;
     // Start is called before the first frame update
     void Start()
@@ -13,6 +14,7 @@ public class EventDriven : MonoBehaviour
 
 
         onGameStarted?.Invoke(1, "ela");
+
     }
 
 
