@@ -21,5 +21,5 @@ public class EventDriven : MonoBehaviour
         Debug.Log($"{test} {number}");
     }
 
-    public void LoadPlayer(int number, string test) => Debug.Log($"{test} {number}");
+    public void LoadPlayer(int number, string test) => Debug.Log($"{number} {test}");
 }
